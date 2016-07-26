@@ -1,0 +1,20 @@
+#pragma once
+
+#include <vector>
+#include <random>
+#include <time.h>
+
+// Selects random element from list
+// If remove is set to true, also removes that element from the list
+template <typename T>
+T pickRandom(std::vector<T> &list, bool remove)
+{
+	srand(time(NULL));
+	int random = rand() % list.size();
+	T retVal = list[random];
+	if (remove)
+	{
+		list.erase(list.begin() + random);
+	}
+	return retVal;
+}
